@@ -48,6 +48,25 @@ app.UseEndpoints(endpoints =>
 
     });
 
+    // here we are setting default value for parameter
+    endpoints.MapGet("/Companies/{companyId=102}", async (context) =>
+    {
+        var companyId = Convert.ToInt32(context.Request.RouteValues["companyId"]);
+        await context.Response.WriteAsync($"\n\nCompanyId is {companyId}");
+
+    });
+
+    // here we are setting default value for parameter
+    endpoints.MapGet("/Companies/{companyName=zainulabdin}/{id}", async (context) =>
+    {
+        var companyId = Convert.ToInt32(context.Request.RouteValues["id"]);
+        var companyName = Convert.ToString(context.Request.RouteValues["companyName"]);
+        await context.Response.WriteAsync($"\n\nCompany Name is {companyName} and Company Id is {companyId}");
+
+    });
+
+
+
 
     // define endpoints here 
 });
