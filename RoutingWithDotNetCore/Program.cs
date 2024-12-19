@@ -65,6 +65,16 @@ app.UseEndpoints(endpoints =>
 
     });
 
+    // how to make parameter as optional
+    endpoints.MapGet("/Vendors/{vendor?}", async (context) =>
+    {
+        var vendor = Convert.ToString(context.Request.RouteValues["vendor"]);
+        if (vendor != null) 
+        {
+            await context.Response.WriteAsync($"\n\nVendor is {vendor}");
+        }
+    });
+
 
 
 
